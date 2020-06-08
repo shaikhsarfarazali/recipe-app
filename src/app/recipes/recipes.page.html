@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Recipes</ion-title>
+    <ion-button slot = "end">
+      <ion-searchbar class="spinner-container" debounce="500"
+      [(ngModel)]="searchTerm"
+      (ionChange)="setFilteredItems()">
+    </ion-searchbar>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-row>
+    <ion-col size-md="6" offset-md="3">
+      <ion-list>
+        <ion-item *ngFor="let item of items" [routerLink]="['./', item.id]">
+          <ion-avatar slot="start">
+            <ion-img [src]="item.imageUrl"></ion-img>
+          </ion-avatar>
+          <ion-label> {{ item.title }} </ion-label>
+        </ion-item>
+      </ion-list>
+      <!-- <ion-list *ngIf="recipe_name!=null">
+        <ion-item *ngFor="let itm of storearray" [routerLink]="['./', itm.id]">
+          <ion-avatar slot="start">
+            <ion-img [src]="itm.images"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            {{itm.getUserRec}}
+          </ion-label>
+        </ion-item>
+      </ion-list> -->
+
+      <!-- <ion-button (click)="btnClicked()" expand="block"> 
+        <ion-icon slot="start" name= {{icon}} ></ion-icon>
+        {{ buttonName }} </ion-button> -->
+        <!-- <form #userForm="ngForm" >
+          <ion-item >
+            <ion-label  position="floating">Enter Recipe Name</ion-label>
+            <ion-input [(ngModel)]="recipe_name" name="rname" #recName type="text" pattern="^[a-zA-Z '\s-]+$" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input [(ngModel)]="image" accept=".jpg,.png,.jpeg" name="images" #recImg type="file" (change)="fileProgress($event)" required></ion-input>
+          </ion-item>
+          <div>
+            <ion-item>
+              <ion-label position="floating">Ingredients</ion-label>
+              <ion-textarea #recIng name="recIng" rows="5" required></ion-textarea>
+            </ion-item>
+          </div>
+          
+          <ion-button [disabled]="userForm.form.invalid" (click)="userRecipe(recName.value,recImg.value,recIng.value)">
+            Submit</ion-button>
+        </form> -->
+        <!-- <form #userForm="ngForm" *ngIf="load">
+          <ion-item >
+            <ion-label  position="floating">Recipe Name</ion-label>
+            <ion-input [(ngModel)]="title" name="nttle" #Title type="text" 
+            required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input [(ngModel)]="image" accept=".jpg,.png,.jpeg" name="images" #Image type="file" 
+            (change)="fileProgress($event)"
+             required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Ingredient</ion-label>
+            <ion-textarea [(ngModel)]="description" #Description name="ndesc" rows="5" required></ion-textarea>
+          </ion-item>
+          <ion-button [disabled]="userForm.form.invalid" color="dark"
+          (click)="userRecipe(Title.value, Description.value, Image.value)">
+            Submit</ion-button>
+        </form> -->
+    </ion-col>
+  </ion-row>
+</ion-content>
